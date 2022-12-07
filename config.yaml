@@ -1,0 +1,47 @@
+test:
+  workers:
+    type: local
+    number: 1
+  rounds:
+    - label: insert Patient
+      txNumber: 100
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      callback: benchmarks/samples/fabric/testeCouch/insertPatient.js
+#    - label: insert D_Items
+#      txNumber: 1000
+#      rateControl:
+#        type: fixed-rate
+#        opts:
+#          tps: 50
+#      callback: benchmarks/samples/fabric/testeCouch/insertDitem.js
+#    - label: insert Prescription
+#      txNumber: 50
+#      rateControl:
+#        type: fixed-rate
+#        opts:
+#          tps: 5
+#      callback: benchmarks/samples/fabric/testeCouch/insertPrescription.js
+#    - label: insert InputeventMv
+#      txNumber: 50
+#      rateControl:
+#        type: fixed-rate
+#        opts:
+#          tps: 5
+#      callback: benchmarks/samples/fabric/testeCouch/insertInputeventMv.js
+#    - label: query Patient by subjectId
+#      txNumber: 50
+#      rateControl:
+#        type: fixed-rate
+#        opts:
+#          tps: 5
+#      callback: benchmarks/samples/fabric/testeCouch/queryPatientId.js 
+monitor:
+  type:
+  - docker
+  docker:
+    names:
+    - all
+  interval: 1
